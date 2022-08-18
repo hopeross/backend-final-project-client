@@ -1,0 +1,11 @@
+
+<div>
+    <h1>Current Posts</h1>
+    <div *ngIf="postList">
+        <div *ngFor="let post of postList">
+            <p>{{post.postText}}</p>
+            <p>{{post.createdOn}}</p>
+        </div>
+
+    </div>
+</div>

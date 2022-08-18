@@ -1,0 +1,23 @@
+<form (ngSubmit)="signUp()">
+    <h1>Create New Account</h1>
+    <!-- need to make these 3 required via front end validation as well -->
+    <span>Username</span>
+    <input placeholder="Choose Username" type="text" name="email" [(ngModel)]="newUser.userName"><br><br>
+    <span>Email  </span>
+    <input placeholder="Enter Email" type="text" name="email" [(ngModel)]="newUser.email"><br><br>
+    <span>Password  </span>
+    <input placeholder="Enter Password" type="text" name="password" [(ngModel)]="newUser.password"><br><br>
+
+    <!-- not required items -->
+    <span>First Name  </span>
+    <input placeholder="Enter First Name" type="text" name="firstName" [(ngModel)]="newUser.firstName"><br><br>
+    <span>Last Name  </span>
+    <input placeholder="Enter Last Name" type="text" name="lastName" [(ngModel)]="newUser.lastName"><br><br>
+    <span>Location  </span>
+    <input placeholder="Where are you?" type="text" name="lastName" [(ngModel)]="newUser.location"><br><br>
+    <span>Title  </span>
+    <input placeholder="What do you do?" type="text" name="lastName" [(ngModel)]="newUser.title"><br><br>    
+    <button>
+      Sign Up
+    </button>
+</form>
