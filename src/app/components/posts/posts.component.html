@@ -1,6 +1,7 @@
 
 <div>
     <h1>Current Posts</h1>
+    <app-new-post></app-new-post>
     <div *ngIf="postList">
         <div *ngFor="let post of postList">
             <p>{{post.postText}}</p>

@@ -15,6 +15,34 @@ export class PostService {
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.baseURL);
   }
+
+  createPost(newPost: Post){
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.post(this.baseURL, newPost, {headers: reqHeaders});
+  }
+
+  getPost(postId: string) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get<Post>(this.baseURL + "/" + postId, {headers: reqHeaders});
+  }
+
+  updatePost(updatedPost: Post) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.put(this.baseURL + "/" + updatedPost.postId, updatedPost, { headers: reqHeaders})
+  }
+
+  deletePost(postId: string) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.delete<any>(this.baseURL + "/" + postId, { headers: reqHeaders});
+  }
 }
 
 
@@ -28,12 +56,7 @@ export class PostService {
 //     return this.http.get<Coffee>(this.baseURL + "/" + coffeeId, {headers: reqHeaders});
 //   }
 
-//   createCoffee(newCoffee: Coffee) {
-//     let reqHeaders = {
-//         Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
-//     }
-//     return this.http.post(this.baseURL, newCoffee, { headers: reqHeaders });
-// }
+
 
 //   updateCoffee(updatedCoffee: Coffee) {
 //     let reqHeaders = {

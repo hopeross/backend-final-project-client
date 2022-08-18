@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
@@ -8,6 +9,7 @@ import { PostService } from 'src/app/services/post.service';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
+
 export class PostsComponent implements OnInit {
   postList: Post[] = [];
   
@@ -18,7 +20,6 @@ export class PostsComponent implements OnInit {
       this.postList = post;
     })
   }
-
 }
 
 
