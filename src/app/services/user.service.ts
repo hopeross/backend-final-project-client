@@ -8,6 +8,7 @@ import { User } from '../models/user';
 })
 export class UserService {
   baseURL: string = "https://localhost:7191/api/auth"
+  tokenKey: string = "myTokenString";
 
   constructor(private http: HttpClient) { }
 
@@ -15,14 +16,40 @@ export class UserService {
     return this.http.post(`${this.baseURL}/signup`, newUser)
   }
 
-  signIn(email: string, password: string){
+  signIn(email: string, password: string) {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('email', email);
     queryParams = queryParams.append('password', password);
 
-    return this.http.get(`${this.baseURL}/signin`, { params: queryParams, responseType: 'text'})
-           .pipe(tap((response: any) => {
-               localStorage.setItem('myCoffeeToken', response);
-             }));
-  }  
+    //TODO REPLACE THIS - I NEED TO LEARN HOW TO NOT BROADCAST PII
+    return this.http.get(`${this.baseURL}/signin`, { params: queryParams, responseType: 'text' })
+      .pipe(tap((response: any) => {
+        localStorage.setItem('myTokenString', response);
+      }));
+  }
+  
+  signout() {
+    localStorage.removeItem("myTokenString");
+  }
+
+  getUser(userId: string) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get<User>(this.baseURL + "/" + userId, { headers: reqHeaders });
+  }
+
+  updateUser(updatedUser: User) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.put(this.baseURL + "/" + updatedUser.userId, updatedUser, { headers: reqHeaders })
+  }
+
+  getCurrentUser() {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get(this.baseURL + "/current", { headers: reqHeaders });
+  }
 }

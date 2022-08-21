@@ -1,12 +1,19 @@
-
 <div>
     <h1>Current Posts</h1>
-    <app-new-post></app-new-post>
+
+    <!-- TODO: Add logic to show/hide post part based on login.  I tried.  I failed.  I won! -->
+    <div *ngIf="(currentUser | json) != '{}' ">
+        <h4>Welcome {{currentUser.userName}}</h4>
+        <app-new-post></app-new-post>
+    </div>
+
+    <!-- TODO: Post Owner Name when not signed in user is a mess -->
     <div *ngIf="postList">
         <div *ngFor="let post of postList">
             <p>{{post.postText}}</p>
-            <p>{{post.createdOn}}</p>
+            <p *ngIf="currentUser.userId == post.ownerId">Posted by <a [routerLink]="['/profilepage/', currentUser.userId]">{{currentUser.userName}}</a> on {{post.createdOn}}</p>
+            <p *ngIf="currentUser.userId != post.ownerId">Posted by {{post.ownerId}} on {{post.createdOn}}</p>
+            <p *ngIf="currentUser.userId == post.ownerId"><a [routerLink]="['/edit', post.postId]">Edit Post</a><button (click)="onDelete(post.postId)">Delete Post</button></p>
         </div>
-
-    </div>
+    </div> 
 </div>

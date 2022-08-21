@@ -1,1 +1,13 @@
-<p>profile-page works!</p>
+<div>
+    <h1>User Information</h1>
+    <div>
+        <p>{{this.id}}</p>
+        <p>{{currentUser.userName}}</p>
+        <p>{{currentUser.firstName}}</p>
+        <p>{{currentUser.lastName}}</p>
+        <p>{{currentUser.location}}</p>
+        <p>{{currentUser.title}}</p>
+        <button [routerLink]='["/editUser", currentUser.userId]'>EDIT</button>
+    </div>
+
+</div>

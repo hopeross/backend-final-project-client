@@ -1,11 +1,11 @@
-
-
 <nav role="navigation">
+  <a routerLink="/post" title="Current Posts">Current Posts</a>
+  <span> | </span>
   <a routerLink="/signup" title="Sign Up">Sign Up</a>
   <span> | </span>
   <a routerLink="/signin" title="Sign In">Sign In</a>
   <span> | </span>
+  <button (click)="signout()">Sign Out</button>
 </nav>
 
-<p>hello world</p>
 <router-outlet></router-outlet>

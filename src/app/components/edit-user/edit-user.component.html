@@ -1,0 +1,16 @@
+<div>
+    <form (ngSubmit)="updateUser()">
+        <h1>Edit User</h1>
+        <p>User Name: </p>
+        <input type="text" name="userName" [(ngModel)]="currentUser.userName">
+        <p>First Name: </p>
+        <input type="text" name="firstName" [(ngModel)]="currentUser.firstName">
+        <p>Last Name: </p>
+        <input type="text" name="lastName" [(ngModel)]="currentUser.lastName">
+        <p>Location: </p>
+        <input type="text" name="location" [(ngModel)]="currentUser.location">
+        <p>Title: </p>
+        <input type="text" name="title" [(ngModel)]="currentUser.title">
+        <p><button>Save User</button></p>
+    </form>
+</div>

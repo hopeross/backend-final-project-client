@@ -1,4 +1,3 @@
-
 export class Post {
     postId?: string;
     postText?: string;

@@ -1,1 +1,6 @@
-<p>edit-post works!</p>
+<form (ngSubmit)="updatePost()">
+    <h1>Edit Post</h1>
+    <p>Post Text</p>
+    <input type="text" name="postText" [(ngModel)]="currentPost.postText">
+    <button>Save Post</button>
+</form>

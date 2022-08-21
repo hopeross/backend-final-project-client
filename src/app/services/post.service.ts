@@ -8,7 +8,7 @@ import { Post } from '../models/post';
 })
 export class PostService {
   baseURL: string = "https://localhost:7191/api/post"
-  tokenKey: string = "thisPostToken";
+  tokenKey: string = "myTokenString";
 
   constructor(private http: HttpClient) { }
 
@@ -44,31 +44,3 @@ export class PostService {
     return this.http.delete<any>(this.baseURL + "/" + postId, { headers: reqHeaders});
   }
 }
-
-
-
-
-
-//   getCoffee(coffeeId: string) {
-//     let reqHeaders = {
-//       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
-//     }
-//     return this.http.get<Coffee>(this.baseURL + "/" + coffeeId, {headers: reqHeaders});
-//   }
-
-
-
-//   updateCoffee(updatedCoffee: Coffee) {
-//     let reqHeaders = {
-//       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
-//     }
-//     return this.http.put(this.baseURL + "/" + updatedCoffee.coffeeId, updatedCoffee, { headers: reqHeaders})
-//   }
-
-//   deleteCoffee(coffeeId: string) {
-//     let reqHeaders = {
-//       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
-//     }
-//     return this.http.delete<any>(this.baseURL + "/" + coffeeId, { headers: reqHeaders});
-//   }
-// }
